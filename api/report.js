@@ -20,17 +20,7 @@ export default async function handler(req, res) {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                embeds: [{
-                    title: "🚗 New Car Detected!",
-                    color: 0xFFA500, // Orange
-                    fields: [
-                        { name: "Game", value: game, inline: true },
-                        { name: "Car ID", value: car_id.toString(), inline: true },
-                        { name: "Reported Name", value: `**${car_name}**` }
-                    ],
-                    footer: { text: "Forza Rich Presence Reporter" },
-                    timestamp: new Date().toISOString()
-                }]
+                content: `New report for **${game}**:\n\`"${car_id}": "${car_name}",\``
             })
         });
         return res.status(200).json({ success: true });
